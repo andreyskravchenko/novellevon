@@ -1,6 +1,6 @@
 # coding: utf-8
-from .bot import Bot
+from .novellevon import Novellevon
 
 __all__ = [
-    'Bot'
+    'Novellevon'
 ]
