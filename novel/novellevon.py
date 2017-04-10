@@ -1,9 +1,12 @@
+# coding: utf-8
 from telegram.ext import Updater, CommandHandler
 from telegram import Bot, ReplyKeyboardMarkup
+from .people import People
+from .actor import Actor
 
 class Novellevon:
 
-    token = "341359640:AAEKpn84nmSqs9fDY05IrJwwMvJNZz__8eo"
+    token = People.Storyteller
 
     def __init__(self):
         self.updater = Updater(self.token)
@@ -21,11 +24,20 @@ class Novellevon:
 
     def start(self, bot, update):
         chatId = update.message.chat_id
-        keyboardButtons = [['/pause']]
-        keyboardMarkup = ReplyKeyboardMarkup(keyboardButtons)
-        bot.sendMessage(chat_id=chatId,
-                        text="has started",
-                        reply_markup=keyboardMarkup)
+        # print update.message
+        # return 0
+        annie = Actor(token=People.Annie)
+        dave = Actor(token=People.Dave)
+        annie.say_hello(chat_id=chatId)
+        dave.say_hello(chat_id=chatId)
+
+
+        # патамушо нам не нада пока
+        #keyboardButtons = [['/pause']]
+        #keyboardMarkup = ReplyKeyboardMarkup(keyboardButtons)
+        #bot.sendMessage(chat_id=chatId,
+        #                text="has started",
+        #                reply_markup=keyboardMarkup)
         
     def pause(self, bot, update):
         chatId = update.message.chat_id
